@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Calculadora</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="calculadora">
+        <input type="text" name="visor " id="visor" /><br />
+        <div class="buttons-container">
+          <button class="button" onclick="">)</button>
+          <button class="button" onclick="">(</button>
+          <button class="button" onclick="">&</button>
+          <button class="button" onclick="">AC</button><br />
+  
+          <button class="button" onclick="">7</button>
+          <button class="button" onclick="">8</button>
+          <button class="button" onclick="">9</button>
+          <button class="button" onclick="">/</button><br />
+  
+          <button class="button" onclick="">4</button>
+          <button class="button" onclick="">5</button>
+          <button class="button" onclick="">6</button>
+          <button class="button" onclick="">*</button><br />
+  
+          <button class="button" onclick="">1</button>
+          <button class="button" onclick="">2</button>
+          <button class="button" nclick="">3</button>
+          <button class="button" onclick="">-</button><br />
+  
+          <button class="button" onclick="">0</button>
+          <button class="button" onclick="">.</button>
+          <button class="button" onclick="">=</button>
+          <button class="button" onclick="">+</button><br />
+        </div>
+      </div>
+
+      <script>
+        const visor = document.getElementById('visor');
+        const buttons = document.querySelectorAll('.button');
+
+        buttons.forEach(button => {
+            button.addEventListener('click', () => {
+                const buttonText = button.textContent;
+
+                if (buttonText === '=') {
+                    // Realizar o cálculo quando o botão de igual for clicado
+                    try {
+                        visor.value = eval(visor.value);
+                    } catch (error) {
+                        visor.value = 'Erro';
+                    }
+                } else if (buttonText === 'AC') {
+                    // Limpar o visor quando o botão AC for clicado
+                    visor.value = '';
+                } else {
+                    // Adicionar o texto do botão ao visor
+                    visor.value += buttonText;
+                }
+            });
+        });
+    </script>
+    
+</body>
+</html>
